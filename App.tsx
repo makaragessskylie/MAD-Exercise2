@@ -1,117 +1,67 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+import React from "react";
+import { 
+  View, 
+  Text, 
+  Image, 
+  TextInput, 
+  ScrollView, 
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
+import coding from './assets/coding.jpg';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <ScrollView style={styles.scrollView}>
+      <Text style={styles.title}>Basic Component in RN</Text>
+      <TextInput placeholder="Masukkan nama lengkap anda :" style={styles.inputNama} />
+      <View style={styles.container}>
+        <View style={{width: 100, height: 100, backgroundColor: 'grey'}}/>
+        <View style={{width: 100, height: 100, backgroundColor: 'yellow'}}/>
+        <View style={{width: 100, height: 100, backgroundColor: 'purple'}}/>        
+      </View>
+      <Image
+        source={require('./assets/code.jpg')} 
+        style={styles.image}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <Image source={coding} style={styles.image} />
+      <Image
+        source={{uri:'https://reactnative.dev/img/tiny_logo.png'}}
+        style={styles.image}
+      />
+    </ScrollView> 
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  scrollView: {
+    flex: 1,
+    backgroundColor: 'white',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 5,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  container: {
+    flexDirection: 'row',
+    marginTop: 10, 
   },
-  highlight: {
-    fontWeight: '700',
+  inputNama: {
+    marginTop: 20,
+    fontSize: 19,
+    fontWeight: 'bold',
+    borderColor: 'black',
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 10,
+    padding: 10,
+  },
+  image: {
+    height: 160, 
+    width: 200, 
+    marginTop: 15, 
+
   },
 });
 
